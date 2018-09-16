@@ -7,6 +7,7 @@ df = subset(df, select = -c(Convience,Nightime,China.Mobile,
 df = subset(df, select = -c(Daytime,theater) )#Single value
 X=df[c(2:23)]
 Y=df[24]
+df[24]=log(df[24])
 logy=log(Y)
 col=colnames(X)
 for (i in col)
@@ -16,5 +17,5 @@ for (i in col)
   geom_smooth(method=lm)
   fit=lm(Y$the.eletricity.sell.amount.per.day~X[[i]])
   temp=temp+labs(title=paste("R squred=",(summary(fit))$r.squared))
-  ggsave(paste(i,".png"), plot = last_plot(),path = "./plot/",units='cm',width = 16, height = 9,dpi=500)
+  ggsave(paste(i,"log.png"), plot = last_plot(),path = "./plot/",units='cm',width = 16, height = 9,dpi=500)
 }

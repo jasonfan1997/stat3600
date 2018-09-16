@@ -26,3 +26,4 @@ for (i in 1:21)
   col=col[-c(worst)]
     
 }
+fit=lm(logy$the.eletricity.sell.amount.per.day~.,data=X[bestcol])
